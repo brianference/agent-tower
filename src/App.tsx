@@ -28,7 +28,9 @@ function ThemeToggle() {
 function Shell({ children }: { children: React.ReactNode }) {
   const [chatOpen, setChatOpen] = useState(false)
   return (
-    <div className={`shell${chatOpen ? ' shell--chat' : ''}`}>
+    <>
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <div id="main-content" className={`shell${chatOpen ? ' shell--chat' : ''}`}>
       <header className="topbar">
         <Link to="/" className="brand">
           Agent Tower
@@ -52,8 +54,10 @@ function Shell({ children }: { children: React.ReactNode }) {
           </a>
         </p>
         <p className="fine">Wire a real gateway next — UI is built for live session JSON.</p>
+              <p className="recruiter-strip">Stack: TypeScript · React · Vite · Cloudflare Pages · AI ops · GitHub</p>
       </footer>
     </div>
+    </>
   )
 }
 
