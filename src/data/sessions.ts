@@ -1,3 +1,4 @@
+/** Demo fleet sessions for Agent Tower. */
 export const SESSIONS = [
   {
     "id": "s1",
@@ -50,3 +51,6 @@ export const SESSIONS = [
     "contextPct": 40
   }
 ] as const
+
+export type AgentSession = (typeof SESSIONS)[number]
+export const DAILY_BUDGET_USD = 20
