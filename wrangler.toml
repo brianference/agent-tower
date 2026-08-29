@@ -3,11 +3,16 @@ compatibility_date = "2026-07-01"
 pages_build_output_dir = "dist"
 
 # Cloudflare D1 (edge SQLite) -- accounts and saved workspace state.
-# Created 2026-08-28; this account is at the free-tier ceiling of 10 databases.
+# SHARED with social-pulse and yt-intel-one. Cloudflare's free tier caps D1 at 10
+# databases per account, so these three share one rather than costing three slots.
+# Tenancy is enforced by users.app with a unique index on (app, email), and by
+# APP.scope in functions/_lib/appconfig.ts. Dropping that scope would merge the
+# three user bases into one -- proven by auth-kit/test/tenancy.mjs, which goes red
+# the moment the app filter is removed.
 [[d1_databases]]
 binding = "DB"
-database_name = "agent-tower-db"
-database_id = "202d4f23-3c2e-4123-ac6f-02d422d9edfb"
+database_name = "fleet-shared-db"
+database_id = "c0b239d8-46ce-4407-b3fe-96dda691abf5"
 migrations_dir = "migrations"
 
 # Plain-text configuration. NOTE: [vars] is replace-not-merge: any var missing
