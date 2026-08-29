@@ -1,0 +1,19 @@
+name = "agent-tower"
+compatibility_date = "2026-07-01"
+pages_build_output_dir = "dist"
+
+# Cloudflare D1 (edge SQLite) -- accounts and saved workspace state.
+# Created 2026-08-28; this account is at the free-tier ceiling of 10 databases.
+[[d1_databases]]
+binding = "DB"
+database_name = "agent-tower-db"
+database_id = "202d4f23-3c2e-4123-ac6f-02d422d9edfb"
+migrations_dir = "migrations"
+
+# Plain-text configuration. NOTE: [vars] is replace-not-merge: any var missing
+# from this block is dropped from the deployment. Secrets (BREVO_API_KEY,
+# RATE_LIMIT_SALT) are set with `wrangler pages secret put` and never appear here.
+[vars]
+SITE_URL   = "https://agent-tower-34v.pages.dev"
+MAIL_FROM  = "no-reply@txeas.com"
+CONTACT_TO = "brianference@protonmail.com"

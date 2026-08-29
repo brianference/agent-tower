@@ -1,0 +1,22 @@
+{
+  "//": "Pages Functions are bundled by wrangler's esbuild, not by vite, so they sit outside tsconfig.json's `include`. Without this file the whole functions/ tree ships unchecked. The Workers types supply crypto/fetch/Request/Response, which the DOM lib would type differently.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "types": [
+      "@cloudflare/workers-types"
+    ],
+    "isolatedModules": true,
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "functions"
+  ]
+}
